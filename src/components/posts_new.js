@@ -1,9 +1,43 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-export default class PostsNew extends Component {
+class PostsNew extends Component {
+  renderField(field){
+    return (
+      <div className="form-group">
+        <label>{field.label}</label>
+        <input
+          className="form-control"
+          type="text"
+          {...field.input}
+        />
+      </div>
+    )
+  }
+
   render(){
     return (
-      <div> POSTS NEW </div>
+      <form>
+        <Field 
+          label="Title"
+          name="title"
+          component={this.renderField}
+        />
+        <Field 
+          label="Catagories"
+          name="catagories"
+          component={this.renderField}
+        />
+        <Field 
+          label="Post Content"
+          name="content"
+          component={this.renderField}
+        />
+      </form>
     );
   }
 }
+
+export default reduxForm({
+  form: 'PostsNewForm'
+})(PostsNew);
