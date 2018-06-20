@@ -11,7 +11,7 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
-        { field.meta.errors }
+        { field.meta.error }
       </div>
     )
   }
@@ -45,8 +45,8 @@ function validate(values){
   if(!values.title){
     errors.title = "Please Enter the title";
   }
-  if(!values.categories){
-    errors.categories = "Please Enter the categories";
+  if(!values.catagories){
+    errors.catagories = "Please Enter the catagories";
   }
   if(!values.content){
     errors.content = "Please Enter the content";
