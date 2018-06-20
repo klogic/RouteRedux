@@ -11,6 +11,7 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
+        { field.meta.errors }
       </div>
     )
   }
@@ -38,6 +39,22 @@ class PostsNew extends Component {
   }
 }
 
+function validate(values){
+  const errors = {};
+
+  if(!values.title){
+    errors.title = "Please Enter the title";
+  }
+  if(!values.categories){
+    errors.categories = "Please Enter the categories";
+  }
+  if(!values.content){
+    errors.content = "Please Enter the content";
+  }
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'PostsNewForm'
 })(PostsNew);
